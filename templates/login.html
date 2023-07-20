@@ -1,0 +1,39 @@
+{% extends 'main.html' %}
+
+{% block title %}
+<title>Login Page</title>
+{% endblock title %}
+
+{% block body %}
+<h1 style="text-align: center;">Login Form</h1>
+
+{% if messages %}
+<div class="alert alert-danger">
+  <ul>
+    <!-- {% for message in messages %} -->
+    <li>{{ message }}</li>
+    <!-- {% endfor %} -->
+  </ul>
+</div>
+{% endif %}
+
+<form class="container my-4" method="POST">
+    {% csrf_token %}
+    <div class="form-row" style="width: 800px; margin-left: 435px;">
+        <div class="form-group col-md-6">
+            <label for="inputEmail4">Email</label>
+            <input type="email" class="form-control" id="inputEmail4" name="email" Required>
+        </div> 
+        <div class="form-group col-md-6 mb-2">
+            <label for="inputPassword4">Password</label>
+            <input type="password" class="form-control" id="inputPassword4" name="password" Required>
+        </div>
+        <button type="submit" class="btn btn-primary" style="margin-right: 20px;">Sign in</button>
+        <a href="http://localhost:8000/forget-password/">Forget your password?</a>
+        <div style="display: flex;">
+            <p>Create an account/</p>
+            <a href="http://localhost:8000">Sign up</a>
+        </div>
+    </div>
+</form>
+{% endblock body %}

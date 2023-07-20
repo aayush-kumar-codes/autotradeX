@@ -1,5 +1,5 @@
 """
-ASGI config for autotradeX project.
+ASGI config for P2PMax project.
 
 It exposes the ASGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.asgi import get_asgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'autotradeX.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'P2PMax.settings')
 
 application = get_asgi_application()

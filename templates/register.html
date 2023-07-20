@@ -1,0 +1,32 @@
+{% extends 'main.html' %}
+
+{% block title %}
+<title>Register Page</title>
+{% endblock title %}
+
+{% block body %}
+<h1 style="text-align: center;">Registration Form</h1>
+
+<form class="container my-4" method="POST">
+    {% csrf_token %}
+    <div class="form-row" style="width: 800px; margin-left: 435px;">
+        <div class="form-group col-md-6">
+            <label for="inputEmail4">Email</label>
+            <input type="email" class="form-control" id="inputEmail4" name="email" Required>
+        </div> 
+        <div class="form-group col-md-6">
+            <label for="inputPassword4">Password</label>
+            <input type="password" class="form-control" id="inputPassword4" name="password" Required>
+        </div>
+        <div class="form-group col-md-6 mb-2">
+            <label for="inputConfirmPassword4">Confirm Password</label>
+            <input type="password" class="form-control" id="inputPassword4" name="confirm password" Required>
+        </div>
+        <button type="submit" class="btn btn-primary">Sign up</button>
+        <div style="display: flex;">
+            <p>Already have an account/</p>
+            <a href="{% url 'login' %}">Sign in</a>
+        </div>
+    </div>
+</form>
+{% endblock body %}

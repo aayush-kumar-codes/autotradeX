@@ -1,5 +1,5 @@
 """
-WSGI config for autotradeX project.
+WSGI config for P2PMax project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'autotradeX.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'P2PMax.settings')
 
 application = get_wsgi_application()

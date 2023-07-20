@@ -1,0 +1,28 @@
+{% extends 'main.html' %}
+
+
+{% block title %}
+</title>Home Page</title>
+{% endblock title %}
+    
+
+
+{% block body %}
+<h1 class='container'>User Login successfully</h1>
+
+{% if messages %}
+<div class="alert alert-danger">
+  <ul>
+    <!-- {% for message in messages %} -->
+    <li>{{ message }}</li>
+    <!-- {% endfor %} -->
+  </ul>
+</div>
+{% endif %}
+
+<a href="{% url 'logout' %}">Logout</a>
+<div>
+    <a href="http://localhost:8000/change-password">Change_Password</a>
+</div> 
+
+{% endblock body %}
