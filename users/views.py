@@ -5,7 +5,7 @@ from django.core.mail import send_mail
 from django.shortcuts import render, redirect
 from django.contrib.auth.hashers import make_password
 from django.contrib.auth import authenticate, login, logout
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, user_passes_test
 from django.contrib import messages
 
 
@@ -123,7 +123,7 @@ def change_password_view(request):
     if request.method == 'GET':
         return render(request, 'changepassword.html')
 
-    if request.method == 'POST':
+    elif request.method == 'POST':
         user = request.user
         if user.is_authenticated:
             old_pass = request.POST.get('old_password')
@@ -145,3 +145,55 @@ def change_password_view(request):
         else:
             return redirect('/changepassword')
         
+
+@login_required
+def profile_view(request):
+    if request.method == 'GET':
+        user = request.user
+    return render(request, 'profile.html', {'user': user})
+        
+
+@login_required
+def updateprofile_view(request):
+    if request.method == 'GET':
+        user_data = {
+            'first_name': request.user.first_name,
+            'last_name': request.user.last_name,
+            'mobile_number': request.user.mobile_no,
+            'address': request.user.address,
+            'city': request.user.city,
+            'state': request.user.state,
+            'zip_code': request.user.zip_code,
+        }
+        return render(request, 'editprofile.html', {'user_data': user_data})
+    
+    elif request.method == 'POST':
+        user = request.user
+        user.first_name = request.POST.get('first_name')
+        user.last_name = request.POST.get('last_name')
+        user.mobile_no = request.POST.get('mobile_number')
+        user.address = request.POST.get('address')
+        user.city = request.POST.get('city')
+        user.state = request.POST.get('state')
+        user.zip_code = request.POST.get('zip_code')
+        user.save()
+        messages.success(request, 'Profile Created successfully')
+        return redirect('/profile')
+    
+def is_staff_user(user):
+    return user.is_staff
+
+@login_required
+@user_passes_test(is_staff_user)
+def active_user(request):
+    if request.method == 'GET':
+        active_users = User.objects.filter(is_active=True)
+        return render(request, 'active_users.html', {'active_users': active_users})
+
+
+@login_required
+@user_passes_test(is_staff_user)
+def all_users(request):
+    if request.method == 'GET':
+        active_users = User.objects.all()
+        return render(request, 'all_users.html', {'active_users': active_users})

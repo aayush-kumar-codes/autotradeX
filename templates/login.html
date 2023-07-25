@@ -5,35 +5,57 @@
 {% endblock title %}
 
 {% block body %}
-<h1 style="text-align: center;">Login Form</h1>
+<!-- <h1 style="text-align: center;">Login Form</h1> -->
 
-{% if messages %}
-<div class="alert alert-danger">
-  <ul>
-    <!-- {% for message in messages %} -->
-    <li>{{ message }}</li>
-    <!-- {% endfor %} -->
-  </ul>
-</div>
-{% endif %}
+<!-- {% if messages %}
+    {% for message in messages %}
+        <div class="alert {% if message.tags %}{% if message.tags == 'success' %}alert-success{% elif message.tags == 'error' %}alert-danger{% endif %}{% endif %}">
+            {{ message }}
+        </div>
+    {% endfor %}
+{% endif %} -->
 
-<form class="container my-4" method="POST">
-    {% csrf_token %}
-    <div class="form-row" style="width: 800px; margin-left: 435px;">
-        <div class="form-group col-md-6">
-            <label for="inputEmail4">Email</label>
-            <input type="email" class="form-control" id="inputEmail4" name="email" Required>
-        </div> 
-        <div class="form-group col-md-6 mb-2">
-            <label for="inputPassword4">Password</label>
-            <input type="password" class="form-control" id="inputPassword4" name="password" Required>
-        </div>
-        <button type="submit" class="btn btn-primary" style="margin-right: 20px;">Sign in</button>
-        <a href="http://localhost:8000/forget-password/">Forget your password?</a>
-        <div style="display: flex;">
-            <p>Create an account/</p>
-            <a href="http://localhost:8000">Sign up</a>
-        </div>
+
+<div class="d-flex">
+    <img src="https://images.livemint.com/img/2023/02/10/1600x900/Stock_market_news_1675988415033_1675988415210_1675988415210.jpg" alt="Login Image" style="width: 1000px; height: 100vh;">
+    <div class="">
+        <h1 style="text-align: center; font-size: 45px; margin-top: 120px; margin-bottom: 100px;">Welcome to P2PMax</h1>
+        <form class="container my-4" method="POST">
+            {% csrf_token %}
+            <div class="form-row" style="width: 800px;">
+                
+                <div class="d-flex justify-content-center">
+                    <div class="form-group col-md-6 mb-3">
+                        <label for="inputEmail4" style="margin-bottom: 5px;">Email</label>
+                        <input type="email" class="form-control" id="inputEmail4" name="email" required>
+                    </div> 
+                </div>
+                <div class="d-flex justify-content-center">
+                    <div class="form-group col-md-6 mb-3">
+                        <label for="inputPassword4" style="margin-bottom: 5px;">Password</label>
+                        <input type="password" class="form-control" id="inputPassword4" name="password" required>
+                    </div>
+                </div>
+                <a href="http://localhost:8000/forget-password/" style="margin-bottom: 5px; margin-left: 200px;">Forget your password?</a>
+                <div style="margin-bottom: 5px; margin-top: 7px; display: flex; justify-content: center;">
+                    <button type="submit" class="btn btn-primary col-md-6">Sign in</button>
+                </div>
+                <div style="display: flex; justify-content: center;">
+                    <p>Create an account/</p>
+                <a href="http://localhost:8000">Sign up</a>
+                </div>
+            </div>
+            <div style="width: 200px;height: 57px; position: absolute; right: 0px;top: 0px;">
+                {% if messages %}
+                    {% for message in messages %}
+                    <div class="alert {% if message.tags %}{% if message.tags == 'success' %}alert-success{% elif message.tags == 'error' %}alert-danger{% endif %}{% endif %}" style="width: 205px;">
+                        {{ message }}
+                    </div>
+                    {% endfor %}
+                    <meta http-equiv="refresh" content="2">
+                {% endif %}
+            </div>
+        </form>
     </div>
-</form>
+</div>
 {% endblock body %}
