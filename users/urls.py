@@ -14,4 +14,7 @@ urlpatterns = [
     path('profile-edit/', views.updateprofile_view, name='update_profile'),
     path('active/', views.active_user, name='active_user'),
     path('all-users/', views.all_users, name='all_users'),
+    path('binance/', views.binance_view, name='binance'),
+    path('api-management/', views.api_management, name='api_management'),
+    path('editapi-management/', views.update_api_management, name='update_api_management'),
 ]

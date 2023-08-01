@@ -20,8 +20,7 @@
           Dashboard
         </button>
         <ul class="dropdown-menu">
-          <li><a class="dropdown-item" href="http://localhost:8000/change-password">Change Password</a></li>
-          <li><a class="dropdown-item" href="http://localhost:8000/profile">Profile</a></li>
+          <li><a class="dropdown-item" href="http://localhost:8000/home">Home</a></li>
           {% if user.is_staff %}
             <li><a class="dropdown-item" href="http://localhost:8000/all-users">All Users</a></li>
             <li><a class="dropdown-item" href="http://localhost:8000/active">Active Users</a></li>
@@ -34,20 +33,25 @@
     {% if messages %}
         {% for message in messages %}
         <div class="alert {% if message.tags %}{% if message.tags == 'success' %}alert-success{% elif message.tags == 'error' %}alert-danger{% endif %}{% endif %}" style="width: 200px;">
-            {{ message }}
+          {{ message }}
         </div>
         {% endfor %}
         <meta http-equiv="refresh" content="2">
     {% endif %}
+  </div>
+  <div style="width: 50px; height: 50px; border-radius: 50%; border: 1px solid black;position: absolute;right: 30px;top: 60px;" class="dropdown">
+    <img src="https://images.livemint.com/img/2023/02/10/1600x900/Stock_market_news_1675988415033_1675988415210_1675988415210.jpg" style="width: 50px; height: 50px; border-radius: 50%; position: relative; right: 0px;" class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+    <button class="dropdown-menu" style="width: 150px; text-align: center; min-width: 100px;">
+      <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
+      <a class="dropdown-item" href="http://localhost:8000/profile">Profile</a>
+      <a class="dropdown-item" href="http://localhost:8000/change-password">Change Password</a>
+      <a class="dropdown-item" href="http://localhost:8000/api-management">API Management</a>
+    </button >
+    {% if user.is_staff %}
+      <div style="background-color: #f0ad4e; color: #fff; padding: 5px; border-radius: 3px; position: absolute;left: -96pc; top: 0px;">Admin</div>
+    {% else %}
+    <div style="background-color: #5cb85c; color: #fff; padding: 5px; border-radius: 3px; position: absolute; left: -96pc; top: 0px;">Member</div>
+    {% endif %}
+  </div>
 </div>
-<div style="width: 50px; height: 50px; border-radius: 50%; border: 1px solid black;position: absolute;right: 30px;top: 60px;" class="dropdown">
-  <img src="https://images.livemint.com/img/2023/02/10/1600x900/Stock_market_news_1675988415033_1675988415210_1675988415210.jpg" style="width: 50px; height: 50px; border-radius: 50%; position: relative; right: 0px;" class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-  <button class="dropdown-menu" style="width: 100px; text-align: center; min-width: 100px;">
-    <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
-  </button >
-
-</div>
-  {% endif %}
-</div>
-
 {% endblock body %}

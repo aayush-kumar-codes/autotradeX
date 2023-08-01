@@ -13,33 +13,27 @@
             <h1 style="text-align: center; font-size: 40px; margin-top: 40px; margin-bottom: -14px;">Welcome to P2PMax</h1>
             <form class="container my-5" method="POST">
                 {% csrf_token %}
-                <div class="form-row" style="width: 600px;">
-                    
+                <div class="form-row" style="width: 600px;"> 
                     <div class="d-flex justify-content-center">
                         <div class="form-group col-md-6 mb-3">
-                            <label for="inputEmail4" style="margin-bottom: 5px;">Email</label>
-                            <input type="email" class="form-control" id="inputEmail4" name="email" required>
+                            <label for="inputPassword4" style="margin-bottom: 5px;">Binance Key</label>
+                            <input type="password" class="form-control" id="binanaceId" name="binance" required>
                         </div> 
                     </div>
                     <div class="d-flex justify-content-center">
                         <div class="form-group col-md-6 mb-3">
-                            <label for="inputPassword4" style="margin-bottom: 5px;">Password</label>
-                            <input type="password" class="form-control" id="inputPassword4" name="password" required>
+                            <label for="inputPassword4" style="margin-bottom: 5px;">Secret Key</label>
+                            <input type="password" class="form-control" id="secret" name="secret" required>
                         </div>
                     </div>
-                    <a href="http://localhost:8000/forget-password/" style="margin-bottom: 5px; margin-left: 200px;">Forget your password?</a>
                     <div style="margin-bottom: 5px; margin-top: 7px; display: flex; justify-content: center;">
-                        <button type="submit" class="btn btn-primary col-md-6">Sign in</button>
-                    </div>
-                    <div style="display: flex; justify-content: center;">
-                        <p>Create an account/</p>
-                        <a href="http://localhost:8000">Sign up</a>
+                        <button type="submit" class="btn btn-primary col-md-6">Proceed</button>
                     </div>
                 </div>
-                <div style="width: 255px;height: 57px; position: absolute; right: 0px;top: 0px;">
+                <div style="width: 300px;height: 57px; position: absolute; right: 0px;top: 0px;">
                     {% if messages %}
                         {% for message in messages %}
-                        <div class="alert {% if message.tags %}{% if message.tags == 'success' %}alert-success{% elif message.tags == 'error' %}alert-danger{% endif %}{% endif %}" style="width: 252px;">
+                        <div class="alert {% if message.tags %}{% if message.tags == 'success' %}alert-success{% elif message.tags == 'error' %}alert-danger{% endif %}{% endif %}" style="width: 295px;">
                             {{ message }}
                         </div>
                         {% endfor %}

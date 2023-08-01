@@ -11,12 +11,12 @@
     <thead>
         <tr>
             <th>Email</th>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Mobile Number</th>
-            <th>Address</th>
-            <th>City</th>
-            <th>State</th>
+            <th>Kyc Full Name</th>
+            <th>Nick Name</th>
+            <th>Phone Number</th>
+            <th>Country</th>
+            <th>Binance Key</th>
+            <th>Secret Key</th>
             <th>Zip Code</th>
         </tr>
     </thead>
@@ -24,12 +24,12 @@
         {% for user in active_users %}
         <tr>
             <td>{{ user.email }}</td>
-            <td>{{ user.first_name }}</td>
-            <td>{{ user.last_name }}</td>
+            <td>{{ user.kyc_full_name }}</td>
+            <td>{{ user.nick_name }}</td>
             <td>{{ user.mobile_no }}</td>
-            <td>{{ user.address }}</td>
-            <td>{{ user.city }}</td>
-            <td>{{ user.state }}</td>
+            <td>{{ user.country }}</td>
+            <td>{{ user.binance_key }}</td>
+            <td>{{ user.secret_key }}</td>
             <td>{{ user.zip_code }}</td>
         </tr>
         {% endfor %}
